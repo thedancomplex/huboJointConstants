@@ -1,6 +1,8 @@
 WST = 0;
 NKY = 1;
 NKP = 2;
+NK1 = NKP;
+NK2 = NKP;
 LSP = 3;
 LSR = 4;
 LSY = 5;
@@ -8,6 +10,8 @@ LEB = 6;
 LWY = 7;
 LWR = 8;
 LWP = 9;
+LW1 = LWP;
+LW2 = LWR;
 
 RSP = 11;
 RSR = 12;
@@ -16,6 +20,8 @@ REB = 14;
 RWY = 15;
 RWR = 16;
 RWP = 17;
+RW1 = RWP;
+RW2 = RWR;
 
 LHY = 19;
 LHR = 20;
@@ -42,6 +48,8 @@ LEBi = 6 + 1;
 LWYi = 7 + 1;
 LWRi = 8 + 1;
 LWPi = 9 + 1;
+LW1i = LWRi;
+LW2i = LWPi;
 
 RSPi = 11 + 1;
 RSRi = 12 + 1;
@@ -50,6 +58,10 @@ REBi = 14 + 1;
 RWYi = 15 + 1;
 RWRi = 16 + 1;
 RWPi = 17 + 1;
+RW1i = RWRi;
+RW2i = RWPi;
+
+
 
 LHYi = 19 + 1;
 LHRi = 20 + 1;
@@ -105,4 +117,228 @@ jn{RKNi} = 'RKN';
 jn{RAPi} = 'RAP';
 jn{RARi} = 'RAR';
 
-jointMax = 32;
+jointMax = 52;
+
+%% Motor controller and paired with their joints
+jmc = [,];
+jmcN = [];
+jmc(1,:) 		= 	[ RHY, RHR ];
+jmcN(1)			=	2;
+jmc(2,:) 		= 	[ RHP ];
+jmcN(2)			=	1;
+jmc(3,:)		=	[ RKN ];
+jmcN(3)			=	1;
+jmc(4,:)		=	[ RAP, RAR ];
+jmcN(4)			=	2;
+jmc(5,:)		=	[ LHP, LHR ];
+jmcN(5)			=	2;
+jmc(6,:)		=	[ LHP ];
+jmcN(6)			=	1;
+jmc(7,:)		=	[ LKN ];
+jmcN(7) 		= 	1;
+jmc(8,:)		=	[ LAP, LAR ];
+jmcN(8)			=	2;
+jmc(9,:)		=	[ RSP, RSR ];
+jmcN(9)			=	2;
+jmc(10,:)		=	[ RSY, REB ];
+jmcN(10)		=	2;
+jmc(11,:)		=	[ LSP, LSR ];
+jmcN(11)		=	2;
+jmc(12,:)		=	[ LSY, LEB ];
+jmcN(12)		=	2;
+tnum 			=  	hex2dec('20');
+jmc(tnum,1)		=	RWY;
+jmc(tnum,2)		=	RW1;
+jmc(tnum,3)		=	RW2;
+tmcN(tnum)		=	3;
+tnum 			=  	hex2dec('21');
+jmc(tnum,:)		=	[ LWY, LW1, LW2 ];
+jmcN(tnum)		=	3;
+tnum 			=  	hex2dec('22');
+jmc(tnum,:)		=	[ NKY, NK1, NK2 ];
+jmcN(tnum)		=	3;
+
+jmc(jointMax,1)		=	0;
+jmcN(jointMax)		=	0;
+
+   % LEFT GEAR RATIO
+
+            ratio(5, LHYi) = 10;
+            ratio(1, LHYi) = 25;
+            ratio(2, LHYi) = 100;
+            ratio(3, LHYi) = 1000;
+            ratio(4, LHYi) = 4;
+
+
+            ratio(5, LHRi) = 324;
+            ratio(1, LHRi) = 1024;
+            ratio(2, LHRi) = 160;
+            ratio(3, LHRi) = 1000;
+            ratio(4, LHRi) = 4;
+
+            %ratio(0, LHP) = 10;
+            %ratio(1, LHP) = 16;
+
+            ratio(5, LHPi) = 16;
+            ratio(1, LHPi) = 20;
+            ratio(2, LHPi) = 160;
+            ratio(3, LHPi) = 1000;
+            ratio(4, LHPi) = 4;
+
+
+            ratio(5, LKNi) = 16;
+            ratio(1, LKNi) = 16;
+            ratio(2, LKNi) = 160;
+            ratio(3, LKNi) = 1000;
+            ratio(4, LKNi) = 4;
+
+            ratio(5, LAPi) = 10;
+            ratio(1, LAPi) = 25;
+            ratio(2, LAPi) = 100;
+            ratio(3, LAPi) = 1000;
+            ratio(4, LAPi) = 4;
+
+            ratio(5, LARi) = 324;
+            ratio(1, LARi) = 1024;
+            ratio(2, LARi) = 100;
+            ratio(3, LARi) = 1000;
+            ratio(4, LARi) = 4;
+
+
+            % right GEAR RATIO
+            ratio(5, RHYi) = 10;
+            ratio(1, RHYi) = 25;
+            ratio(2, RHYi) = 100;
+            ratio(3, RHYi) = 1000;
+            ratio(4, RHYi) = 4;
+
+            ratio(5, RHRi) = 324;
+            ratio(1, RHRi) = 1024;
+            %ratio(0, RHiR) = 10;
+            %ratio(1, RHiR) = 25;
+            ratio(2, RHRi) = 160;
+            ratio(3, RHRi) = 1000;
+            ratio(4, RHRi) = 4;
+
+
+            %ratio(0, RHP) = 10;
+            %ratio(1, RHP) = 16;
+
+            ratio(5, RHPi) = 16;
+            ratio(1, RHPi) = 20;
+            ratio(2, RHPi) = 160;
+            ratio(3, RHPi) = 1000;
+            ratio(4, RHPi) = 4;
+
+            ratio(5, RKNi) = 16;
+            ratio(1, RKNi) = 16;
+            ratio(2, RKNi) = 160;
+            ratio(3, RKNi) = 1000;
+            ratio(4, RKNi) = 4;
+
+
+            ratio(5, RAPi) = 10;
+            ratio(1, RAPi) = 25;
+            ratio(2, RAPi) = 100;
+            ratio(3, RAPi) = 1000;
+            ratio(4, RAPi) = 4;
+
+            ratio(5, RARi) = 324;
+            ratio(1, RARi) = 1024;
+            ratio(2, RARi) = 100;
+            ratio(3, RARi) = 1000;
+            ratio(4, RARi) = 4;
+
+            % WASTE
+            ratio(5, WSTi) = 10;
+            ratio(1, WSTi) = 25;
+            ratio(2, WSTi) = 100;
+            ratio(3, WSTi) = 1000;
+            ratio(4, WSTi) = 4;
+
+            % RIGHT TOP
+            ratio(5, RSPi) = 11;
+            ratio(1, RSPi) = 16;
+            ratio(2, RSPi) = 100;
+            ratio(3, RSPi) = 1000;
+            ratio(4, RSPi) = 4;
+
+            ratio(5, RSRi) = 1;
+            ratio(1, RSRi) = 1;
+            ratio(2, RSRi) = 100;
+            ratio(3, RSRi) = 1000;
+            ratio(4, RSRi) = 4;
+
+            ratio(5, RSYi) = 1;
+            ratio(1, RSYi) = 1;
+            ratio(2, RSYi) = 100;
+            ratio(3, RSYi) = 1000;
+            ratio(4, RSYi) = 4;
+
+            ratio(5, REBi) = 20;
+            ratio(1, REBi) = 24;
+            ratio(2, REBi) = 100;
+            ratio(3, REBi) = 1000;
+            ratio(4, REBi) = 4;
+
+            ratio(5, RWYi) = 1;
+            ratio(1, RWYi) = 1;
+            ratio(2, RWYi) = 100;
+            ratio(3, RWYi) = 32;
+            ratio(4, RWYi) = 4;
+
+            ratio(5, RW1i) = 1;
+            ratio(1, RW1i) = 1;
+            ratio(2, RW1i) = 1;
+            ratio(3, RW1i) = 32;
+            ratio(4, RW1i) = 4;
+
+            ratio(5, RW2i) = 1;
+            ratio(1, RW2i) = 1;
+            ratio(2, RW2i) = 1;
+            ratio(3, RW2i) = 32;
+            ratio(4, RW2i) = 4;
+
+
+            % LEFT TOP
+            ratio(5, LSPi) = 11;
+            ratio(1, LSPi) = 16;
+            ratio(2, LSPi) = 100;
+            ratio(3, LSPi) = 1000;
+            ratio(4, LSPi) = 4;
+
+            ratio(5, LSRi) = 1;
+            ratio(1, LSRi) = 1;
+            ratio(2, LSRi) = 100;
+            ratio(3, LSRi) = 1000;
+            ratio(4, LSRi) = 4;
+
+            ratio(5, LSYi) = 1;
+            ratio(1, LSYi) = 1;
+            ratio(2, LSYi) = 100;
+            ratio(3, LSYi) = 1000;
+            ratio(4, LSYi) = 4;
+
+            ratio(5, LEBi) = 20;
+            ratio(1, LEBi) = 24;
+            ratio(2, LEBi) = 100;
+            ratio(3, LEBi) = 1000;
+            ratio(4, LEBi) = 4;
+
+            ratio(5, LWYi) = 1;
+            ratio(1, LWYi) = 1;
+            ratio(2, LWYi) = 100;
+            ratio(3, LWYi) = 32;
+            ratio(4, LWYi) = 4;
+
+            ratio(5, LW1i) = 1;
+            ratio(1, LW1i) = 1;
+            ratio(2, LW1i) = 1;
+            ratio(3, LW1i) = 32;
+            ratio(4, LW1i) = 4;
+
+            ratio(5, LW2i) = 1;
+            ratio(1, LW2i) = 1;
+            ratio(2, LW2i) = 1;
+            ratio(3, LW2i) = 32;
+            ratio(4, LW2i) = 4;
