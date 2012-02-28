@@ -41,6 +41,8 @@ RAR = 31;
 WSTi = 0 + 1;
 NKYi = 1 + 1;
 NKPi = 2 + 1;
+NK1i = NK1+1;
+NK2i = NK2+1;
 LSPi = 3 + 1;
 LSRi = 4 + 1;
 LSYi = 5 + 1;
@@ -73,7 +75,7 @@ LARi = 24 + 1;
 RHYi = 26 + 1;
 RHRi = 27 + 1;
 RHPi = 28 + 1;
-RKNi = 29 + 1;
+RKNi = RKN + 1;
 RAPi = 30 + 1;
 RARi = 31 + 1;
 
@@ -81,6 +83,46 @@ RARi = 31 + 1;
 sn = [];
 sn(RSPi) = -1;
 sn(REBi) = -1;
+
+
+
+
+
+%% Joint motor controller numbers
+jmcM = [];
+jmcM(RHYi) 	=	0;
+jmcM(RHRi)	=	0;
+jmcM(RHPi)	=	1;
+jmcM(RKNi)	=	2;
+jmcM(RAPi)	=	3;
+jmcM(RARi)	=	3;
+jmcM(LHYi)	=	4;
+jmcM(LHRi)	=	4;
+jmcM(LHPi)	=	5;
+jmcM(LKNi)	=	6;
+jmcM(LAPi)	=	7;
+jmcM(LARi)	=	7;
+jmcM(RSPi)	=	8;
+jmcM(RSRi)	=	8;
+jmcM(RSYi)	=	9;
+jmcM(REBi)	=	9;
+jmcM(LSPi)	=	hex2dec('A');
+jmcM(LSRi)	=	hex2dec('A');
+jmcM(LSYi)	=	hex2dec('B');
+jmcM(LEBi)	=	hex2dec('B');
+jmcM(WSTi)	=	hex2dec('23');
+jmcM(RWYi)	=	hex2dec('20');
+jmcM(RW1i)	=	hex2dec('20');
+jmcM(RW2i)	=	hex2dec('20');
+jmcM(LWYi)	=	hex2dec('21');
+jmcM(LW1i)	=	hex2dec('21');
+jmcM(LW2i)	=	hex2dec('21');
+jmcM(NKYi)	=	hex2dec('22');
+jmcM(NK1i)	=	hex2dec('22');
+jmcM(NK2i)	=	hex2dec('22');
+
+
+
 
 %% Joint Name
 jn = {};		
@@ -130,7 +172,7 @@ jmc(3,:)		=	[ RKN ];
 jmcN(3)			=	1;
 jmc(4,:)		=	[ RAP, RAR ];
 jmcN(4)			=	2;
-jmc(5,:)		=	[ LHP, LHR ];
+jmc(5,:)		=	[ LHY, LHR ];
 jmcN(5)			=	2;
 jmc(6,:)		=	[ LHP ];
 jmcN(6)			=	1;
@@ -160,6 +202,39 @@ jmcN(tnum)		=	3;
 
 jmc(jointMax,1)		=	0;
 jmcN(jointMax)		=	0;
+
+tnum			=	hex2dec('23');
+jmc(tnum,:)		=	WST;
+jmcN(tnum)		=	1;
+
+
+%% enc2aces Direction
+enc2acesDir 		=	[];
+enc2acesDir(REBi)	=	-1;
+enc2acesDir(RSPi)	=	1;
+enc2acesDir(RSYi)	=	-1;
+enc2acesDir(RSRi)	=	1;
+enc2acesDir(LSRi)	=	1;
+enc2acesDir(LSPi)	=	-1;
+enc2acesDir(LEBi)	=	1;
+enc2acesDir(LSYi)	=	1;
+enc2acesDir(RARi)	=	1;
+enc2acesDir(RAPi)	=	1;
+enc2acesDir(RKNi)	=	1;
+enc2acesDir(RHYi)	=	-1;
+enc2acesDir(RHRi)	=	1;
+enc2acesDir(RHPi)	=	1;
+enc2acesDir(LAPi)	=	1;
+enc2acesDir(LARi)	=	1;
+enc2acesDir(LKNi)	=	-1;
+enc2acesDir(LHYi)	=	-1;
+enc2acesDir(LHRi)	=	-1;
+enc2acesDir(LHPi)	=	-1;
+enc2acesDir(WSTi)	=	-1;
+enc2acesDir(RWYi)	=	-1;
+
+enc2acesDir(99)		=	0;
+
 
    % LEFT GEAR RATIO
 
