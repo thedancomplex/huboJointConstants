@@ -159,7 +159,7 @@ jn{RKNi} = 'RKN';
 jn{RAPi} = 'RAP';
 jn{RARi} = 'RAR';
 
-jointMax = 52;
+jointMax = 100;
 
 %% Motor controller and paired with their joints
 jmc = [,];
@@ -188,25 +188,26 @@ jmc(11,:)		=	[ LSP, LSR ];
 jmcN(11)		=	2;
 jmc(12,:)		=	[ LSY, LEB ];
 jmcN(12)		=	2;
-tnum 			=  	hex2dec('20');
+
+tnum 			=  	hex2dec('20')+1;
 jmc(tnum,1)		=	RWY;
 jmc(tnum,2)		=	RW1;
 jmc(tnum,3)		=	RW2;
-tmcN(tnum)		=	3;
-tnum 			=  	hex2dec('21');
+jmcN(tnum)		=	3;
+tnum 			=  	hex2dec('21')+1;
 jmc(tnum,:)		=	[ LWY, LW1, LW2 ];
 jmcN(tnum)		=	3;
-tnum 			=  	hex2dec('22');
+tnum 			=  	hex2dec('22')+1;
 jmc(tnum,:)		=	[ NKY, NK1, NK2 ];
 jmcN(tnum)		=	3;
 
-jmc(jointMax,1)		=	0;
-jmcN(jointMax)		=	0;
 
-tnum			=	hex2dec('23');
+tnum			=	hex2dec('23')+1;
 jmc(tnum,:)		=	WST;
 jmcN(tnum)		=	1;
 
+jmc(jointMax,1)		=	0;
+jmcN(jointMax)		=	0;
 
 %% enc2aces Direction
 enc2acesDir 		=	[];
@@ -231,7 +232,8 @@ enc2acesDir(LHYi)	=	-1;
 enc2acesDir(LHRi)	=	-1;
 enc2acesDir(LHPi)	=	-1;
 enc2acesDir(WSTi)	=	-1;
-enc2acesDir(RWYi)	=	-1;
+enc2acesDir(RWYi)	=	1;
+enc2acesDir(LWYi)	=	1;
 
 enc2acesDir(99)		=	0;
 
