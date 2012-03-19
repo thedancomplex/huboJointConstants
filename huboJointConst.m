@@ -160,6 +160,8 @@ jn{RAPi} = 'RAP';
 jn{RARi} = 'RAR';
 
 jointMax = 100;
+jn{jointMax} 	=	'FRM';
+
 
 %% Motor controller and paired with their joints
 jmc = [,];
@@ -237,6 +239,30 @@ enc2acesDir(LWYi)	=	1;
 
 enc2acesDir(99)		=	0;
 
+%% open rave direction
+orDir(jointMax) 	=	0;
+orDir(RSPi)		=	-1;
+orDir(RSRi)		=	-1;
+orDir(RSYi)		=	1;
+orDir(REBi)		=	-1;
+orDir(LSPi)		=	-1;
+orDir(LSRi)		=	-1;
+orDir(LSYi) 		=	-1;
+orDir(LEBi)		= 	-1;
+orDir(WSTi)		=	1;
+orDir(RHPi)		=	-1;
+orDir(RHRi) 		= 	1;
+orDir(RHYi) 		=	1;
+orDir(RKNi) 		=	1;
+orDir(RAPi) 		=	-1;
+orDir(RARi) 		=	-1;
+
+orDir(LHPi)		=	-1;
+orDir(LHRi) 		= 	-1;
+orDir(LHYi) 		=	1;
+orDir(LKNi) 		=	1;
+orDir(LAPi) 		=	-1;
+orDir(LARi) 		=	-1;
 
    % LEFT GEAR RATIO
 
