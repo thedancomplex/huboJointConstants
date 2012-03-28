@@ -265,6 +265,8 @@ orDir(LHYi) 		=	1;
 orDir(LKNi) 		=	1;
 orDir(LAPi) 		=	-1;
 orDir(LARi) 		=	-1;
+orDir(NKYi)		=	1;	% needs to be checked
+
 
    % LEFT GEAR RATIO
 
