@@ -37,6 +37,8 @@ RKN = 29;
 RAP = 30;
 RAR = 31;
 
+RHN = 70;
+
 %% Joint index values for matlab
 WSTi = 0 + 1;
 NKYi = 1 + 1;
@@ -78,6 +80,7 @@ RHPi = 28 + 1;
 RKNi = RKN + 1;
 RAPi = 30 + 1;
 RARi = 31 + 1;
+RHNi = RHN + 1;
 
 %% sign for joints
 sn = [];
@@ -158,6 +161,7 @@ jn{RHPi} = 'RHP';
 jn{RKNi} = 'RKN';
 jn{RAPi} = 'RAP';
 jn{RARi} = 'RAR';
+jn{RHNi} = 'RHN';
 
 jointMax = 100;
 jn{jointMax} 	=	'FRM';
